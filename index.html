@@ -98,6 +98,22 @@
             .icon { width: 85px; height: 85px; }
         }
     </style>
+
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#2ecc71">
+<link rel="apple-touch-icon" href="icon3D.jpg">
+
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('./sw.js')
+        .then(reg => console.log('Service Worker registered!'))
+        .catch(err => console.log('Service Worker registration failed: ', err));
+    });
+  }
+</script>
+
+    
 </head>
 <body>
 
