@@ -8,34 +8,35 @@
         body {
             margin: 0;
             padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', Roboto, sans-serif;
             background: radial-gradient(circle at center, #2c3e50 0%, #0f171e 100%);
             min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
         }
 
-        /* --- HEADER MỚI CẬP NHẬT --- */
+        /* --- HEADER MỚI: XANH LÁ SÁNG --- */
         .header {
-            width: 100%; /* Chiều rộng toàn màn hình */
-            background-color: #1a7f37; /* Màu xanh lá cây đậm (Sea Green) */
+            width: 100%;
+            /* Sử dụng màu xanh lá sáng (Emerald Green) */
+            background-color: #2ecc71; 
+            /* Hoặc dùng Gradient để trông xịn hơn */
+            background: linear-gradient(90deg, #2ecc71, #27ae60);
             text-align: center;
-            padding: 20px 0; /* Khoảng cách trên dưới */
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3); /* Đổ bóng cho header */
-            position: sticky; /* Giữ header ở trên cùng khi cuộn */
+            padding: 25px 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+            position: sticky;
             top: 0;
             z-index: 1000;
         }
 
         .header-title {
-            font-size: 32px;
-            font-weight: 800; /* Rất đậm */
-            letter-spacing: 2px; /* Khoảng cách chữ */
-            color: #ffffff; /* Màu trắng */
-            text-transform: uppercase; /* Viết hoa toàn bộ */
+            font-size: 36px; /* Tăng kích thước chữ một chút */
+            font-weight: 900; /* Siêu đậm */
+            letter-spacing: 3px;
+            color: #ffffff; /* Chữ trắng */
+            text-transform: uppercase;
             margin: 0;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.3); /* Đổ bóng nhẹ cho chữ */
+            /* Đổ bóng chữ để nổi bật trên nền sáng */
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
         }
         /* --------------------------- */
 
@@ -43,9 +44,9 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, 120px);
             gap: 40px;
-            padding: 60px 20px 20px; /* Thêm padding top để không bị header che */
-            width: 90%;
+            padding: 60px 20px;
             max-width: 1000px; 
+            margin: 0 auto;
             justify-content: center;
         }
 
@@ -57,60 +58,45 @@
         }
 
         .icon {
-            width: 90px;
-            height: 90px;
-            border-radius: 22px; 
-            background: rgba(255, 255, 255, 0.1);
+            width: 100px;
+            height: 100px;
+            border-radius: 24px; 
+            background: rgba(255, 255, 255, 0.15);
             border: 1px solid rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 0 auto;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-            overflow: hidden; 
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
             transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
         .icon img {
             width: 100%;
             height: 100%;
-            object-fit: cover; 
+            object-fit: cover;
         }
 
         .label {
-            margin-top: 12px;
-            font-size: 15px;
-            font-weight: 500;
-            color: rgba(255, 255, 255, 0.9);
-            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            margin-top: 15px;
+            font-size: 16px;
+            font-weight: 600;
+            color: #ffffff;
         }
 
         .item:hover .icon {
-            transform: translateY(-10px) scale(1.05);
-            background: rgba(255, 255, 255, 0.2);
-            border-color: rgba(255, 255, 255, 0.4);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
-        }
-
-        .item:active .icon {
-            transform: scale(0.95);
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.25);
+            box-shadow: 0 15px 35px rgba(46, 204, 113, 0.4); /* Đổ bóng màu xanh nhẹ khi hover */
         }
 
         @media (max-width: 768px) {
-            .grid {
-                grid-template-columns: repeat(auto-fit, 100px);
-                gap: 20px;
-                padding-top: 40px;
-            }
-            .icon {
-                width: 80px;
-                height: 80px;
-            }
-            .header-title {
-                font-size: 24px;
-            }
+            .header-title { font-size: 26px; }
+            .grid { grid-template-columns: repeat(auto-fit, 100px); gap: 25px; }
+            .icon { width: 85px; height: 85px; }
         }
     </style>
 </head>
@@ -122,32 +108,27 @@
 
 <div class="grid">
     <a class="item" href="https://ntnhanauto-eng.github.io/block3dviewer/" target="_blank">
-        <div class="icon"><img src="icon3D.png" alt="3D"></div>
+        <div class="icon"><img src="icon3D.png"></div>
         <div class="label">Block 3D</div>
     </a>
-
     <a class="item" href="https://ntnhanauto-eng.github.io/chamcong/" target="_blank">
-        <div class="icon"><img src="hr.jpg" alt="Attendance"></div>
+        <div class="icon"><img src="hr.jpg"></div>
         <div class="label">Chấm công</div>
     </a>
-
     <a class="item" href="https://hr.hd-hvs.com/#/v10a2000/" target="_blank">
-        <div class="icon"><img src="hr.jpg" alt="Salary"></div>
+        <div class="icon"><img src="hr.jpg"></div>
         <div class="label">Bảng lương</div>
     </a>
-
     <a class="item" href="https://pp.hd-hvs.com/#/v20Menu/" target="_blank">
-        <div class="icon"><img src="pp.jpg" alt="Production"></div>
+        <div class="icon"><img src="pp.jpg"></div>
         <div class="label">Production</div>
     </a>
-
     <a class="item" href="https://tqm.hd-hvs.com/#/v80Menu/" target="_blank">
-        <div class="icon"><img src="tqm.jpg" alt="TQM"></div>
+        <div class="icon"><img src="tqm.jpg"></div>
         <div class="label">TQM</div>
     </a>
-
     <a class="item" href="https://www.windy.com" target="_blank">
-        <div class="icon"><img src="windy.jpg" alt="Weather"></div>
+        <div class="icon"><img src="windy.jpg"></div>
         <div class="label">Thời tiết</div>
     </a>
 </div>
