@@ -13,41 +13,45 @@
             min-height: 100vh;
         }
 
-       /* --- HEADER THẤP VÀ GỌN GÀNG --- */
-.header {
-    width: 100%;
-    /* Màu xanh lá sáng chuyên nghiệp */
-    background: linear-gradient(90deg, #2ecc71, #27ae60);
-    text-align: center;
-    /* Giảm padding từ 25px xuống 12px để header thấp hơn */
-    padding: 12px 0; 
-    box-shadow: 0 3px 10px rgba(0,0,0,0.3);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-}
+        /* --- HEADER THẤP VÀ GỌN GÀNG --- */
+        .header {
+            width: 100%;
+            background: linear-gradient(90deg, #2ecc71, #27ae60);
+            text-align: center;
+            padding: 10px 0; /* Thu gọn thêm một chút để cân đối với 2 dòng */
+            box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
 
-.header-title {
-    /* Giảm cỡ chữ xuống một chút để cân đối với độ cao mới */
-    font-size: 24px; 
-    font-weight: 800;
-    letter-spacing: 2px;
-    color: #ffffff;
-    text-transform: uppercase;
-    margin: 0;
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-}
+        .header-title {
+            font-size: 22px; 
+            font-weight: 800;
+            letter-spacing: 2px;
+            color: #ffffff;
+            text-transform: uppercase;
+            margin: 0;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+        }
 
-/* Điều chỉnh lại khoảng cách của Grid để không bị sát Header quá */
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, 120px);
-    gap: 35px;
-    padding: 40px 20px; /* Giảm padding top của grid */
-    max-width: 1000px; 
-    margin: 0 auto;
-    justify-content: center;
-}
+        /* Style cho phần thời gian */
+        .header-time {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 500;
+            margin-top: 2px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, 120px);
+            gap: 35px;
+            padding: 40px 20px;
+            max-width: 1000px; 
+            margin: 0 auto;
+            justify-content: center;
+        }
 
         .item {
             text-decoration: none;
@@ -89,11 +93,12 @@
         .item:hover .icon {
             transform: translateY(-10px);
             background: rgba(255, 255, 255, 0.25);
-            box-shadow: 0 15px 35px rgba(46, 204, 113, 0.4); /* Đổ bóng màu xanh nhẹ khi hover */
+            box-shadow: 0 15px 35px rgba(46, 204, 113, 0.4);
         }
 
         @media (max-width: 768px) {
-            .header-title { font-size: 26px; }
+            .header-title { font-size: 20px; }
+            .header-time { font-size: 12px; }
             .grid { grid-template-columns: repeat(auto-fit, 100px); gap: 25px; }
             .icon { width: 85px; height: 85px; }
         }
@@ -102,7 +107,8 @@
 <body>
 
 <header class="header">
-    <h1 class="header-title">SMART SYSTEM</h1>
+    <div class="header-title">SMART SYSTEM</div>
+    <div id="clock" class="header-time">Đang tải...</div>
 </header>
 
 <div class="grid">
@@ -131,6 +137,30 @@
         <div class="label">Thời tiết</div>
     </a>
 </div>
+
+<script>
+    function updateClock() {
+        const now = new Date();
+        
+        // Định dạng giờ:phút:giây
+        const hours = String(now.getHours()).padStart(2, '0');
+        const minutes = String(now.getMinutes()).padStart(2, '0');
+        const seconds = String(now.getSeconds()).padStart(2, '0');
+        
+        // Định dạng ngày/tháng/năm
+        const day = String(now.getDate()).padStart(2, '0');
+        const month = String(now.getMonth() + 1).padStart(2, '0');
+        const year = now.getFullYear();
+
+        const timeString = hours + ":" + minutes + ":" + seconds + " - " + day + "/" + month + "/" + year;
+        document.getElementById('clock').textContent = timeString;
+    }
+
+    // Cập nhật mỗi giây
+    setInterval(updateClock, 1000);
+    // Chạy lần đầu ngay khi load trang
+    updateClock();
+</script>
 
 </body>
 </html>
