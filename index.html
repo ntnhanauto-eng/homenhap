@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart System</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: radial-gradient(circle at center, #2c3e50 0%, #0f171e 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* --- HEADER MỚI CẬP NHẬT --- */
+        .header {
+            width: 100%; /* Chiều rộng toàn màn hình */
+            background-color: #1a7f37; /* Màu xanh lá cây đậm (Sea Green) */
+            text-align: center;
+            padding: 20px 0; /* Khoảng cách trên dưới */
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3); /* Đổ bóng cho header */
+            position: sticky; /* Giữ header ở trên cùng khi cuộn */
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-title {
+            font-size: 32px;
+            font-weight: 800; /* Rất đậm */
+            letter-spacing: 2px; /* Khoảng cách chữ */
+            color: #ffffff; /* Màu trắng */
+            text-transform: uppercase; /* Viết hoa toàn bộ */
+            margin: 0;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3); /* Đổ bóng nhẹ cho chữ */
+        }
+        /* --------------------------- */
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, 120px);
+            gap: 40px;
+            padding: 60px 20px 20px; /* Thêm padding top để không bị header che */
+            width: 90%;
+            max-width: 1000px; 
+            justify-content: center;
+        }
+
+        .item {
+            text-decoration: none;
+            color: white;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .icon {
+            width: 90px;
+            height: 90px;
+            border-radius: 22px; 
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            overflow: hidden; 
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; 
+        }
+
+        .label {
+            margin-top: 12px;
+            font-size: 15px;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.9);
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .item:hover .icon {
+            transform: translateY(-10px) scale(1.05);
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.4);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .item:active .icon {
+            transform: scale(0.95);
+        }
+
+        @media (max-width: 768px) {
+            .grid {
+                grid-template-columns: repeat(auto-fit, 100px);
+                gap: 20px;
+                padding-top: 40px;
+            }
+            .icon {
+                width: 80px;
+                height: 80px;
+            }
+            .header-title {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header class="header">
+    <h1 class="header-title">SMART SYSTEM</h1>
+</header>
+
+<div class="grid">
+    <a class="item" href="https://ntnhanauto-eng.github.io/block3dviewer/" target="_blank">
+        <div class="icon"><img src="icon3D.png" alt="3D"></div>
+        <div class="label">Block 3D</div>
+    </a>
+
+    <a class="item" href="https://ntnhanauto-eng.github.io/chamcong/" target="_blank">
+        <div class="icon"><img src="hr.jpg" alt="Attendance"></div>
+        <div class="label">Chấm công</div>
+    </a>
+
+    <a class="item" href="https://hr.hd-hvs.com/#/v10a2000/" target="_blank">
+        <div class="icon"><img src="hr.jpg" alt="Salary"></div>
+        <div class="label">Bảng lương</div>
+    </a>
+
+    <a class="item" href="https://pp.hd-hvs.com/#/v20Menu/" target="_blank">
+        <div class="icon"><img src="pp.jpg" alt="Production"></div>
+        <div class="label">Production</div>
+    </a>
+
+    <a class="item" href="https://tqm.hd-hvs.com/#/v80Menu/" target="_blank">
+        <div class="icon"><img src="tqm.jpg" alt="TQM"></div>
+        <div class="label">TQM</div>
+    </a>
+
+    <a class="item" href="https://www.windy.com" target="_blank">
+        <div class="icon"><img src="windy.jpg" alt="Weather"></div>
+        <div class="label">Thời tiết</div>
+    </a>
+</div>
+
+</body>
+</html>
