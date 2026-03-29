@@ -13,42 +13,41 @@
             min-height: 100vh;
         }
 
-        /* --- HEADER MỚI: XANH LÁ SÁNG --- */
-        .header {
-            width: 100%;
-            /* Sử dụng màu xanh lá sáng (Emerald Green) */
-            background-color: #2ecc71; 
-            /* Hoặc dùng Gradient để trông xịn hơn */
-            background: linear-gradient(90deg, #2ecc71, #27ae60);
-            text-align: center;
-            padding: 25px 0;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
+       /* --- HEADER THẤP VÀ GỌN GÀNG --- */
+.header {
+    width: 100%;
+    /* Màu xanh lá sáng chuyên nghiệp */
+    background: linear-gradient(90deg, #2ecc71, #27ae60);
+    text-align: center;
+    /* Giảm padding từ 25px xuống 12px để header thấp hơn */
+    padding: 12px 0; 
+    box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
 
-        .header-title {
-            font-size: 36px; /* Tăng kích thước chữ một chút */
-            font-weight: 900; /* Siêu đậm */
-            letter-spacing: 3px;
-            color: #ffffff; /* Chữ trắng */
-            text-transform: uppercase;
-            margin: 0;
-            /* Đổ bóng chữ để nổi bật trên nền sáng */
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
-        }
-        /* --------------------------- */
+.header-title {
+    /* Giảm cỡ chữ xuống một chút để cân đối với độ cao mới */
+    font-size: 24px; 
+    font-weight: 800;
+    letter-spacing: 2px;
+    color: #ffffff;
+    text-transform: uppercase;
+    margin: 0;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+}
 
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, 120px);
-            gap: 40px;
-            padding: 60px 20px;
-            max-width: 1000px; 
-            margin: 0 auto;
-            justify-content: center;
-        }
+/* Điều chỉnh lại khoảng cách của Grid để không bị sát Header quá */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 120px);
+    gap: 35px;
+    padding: 40px 20px; /* Giảm padding top của grid */
+    max-width: 1000px; 
+    margin: 0 auto;
+    justify-content: center;
+}
 
         .item {
             text-decoration: none;
