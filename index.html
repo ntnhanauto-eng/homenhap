@@ -148,22 +148,6 @@
     font-weight: 600;
 }
 
-        
-    </style>
-
-<link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#2ecc71">
-<link rel="apple-touch-icon" href="sm.png">
-
-<script>
-  if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-      navigator.serviceWorker.register('./sw.js')
-        .then(reg => console.log('Service Worker registered!'))
-        .catch(err => console.log('Service Worker registration failed: ', err));
-    });
-  }
-
 .divider-text {
     width: 80%;
     margin: 15px auto;
@@ -189,6 +173,25 @@
     font-size: 14px;
     letter-spacing: 1px;
 }
+
+
+        
+        
+    </style>
+
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#2ecc71">
+<link rel="apple-touch-icon" href="sm.png">
+
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('./sw.js')
+        .then(reg => console.log('Service Worker registered!'))
+        .catch(err => console.log('Service Worker registration failed: ', err));
+    });
+  }
+
 
 
     
