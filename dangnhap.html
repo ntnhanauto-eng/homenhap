@@ -64,35 +64,34 @@
 
     <script>
         // Cấu hình tài khoản mẫu (Bạn có thể thay đổi ở đây)
-        const VALID_USER = "admin";
-        const VALID_PASS = "123456";
+       const USERS = [
+    { username: "admin", password: "123456" },
+    { username: "khach", password: "khach" }
+];
         const HOME_URL = "https://ntnhanauto-eng.github.io/homenhap/";
 
         const loginForm = document.getElementById('loginForm');
         const errorMessage = document.getElementById('errorMessage');
 
         // Xử lý sự kiện đăng nhập
-        loginForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const user = document.getElementById('username').value;
-            const pass = document.getElementById('password').value;
+       loginForm.addEventListener('submit', function(e) {
+    e.preventDefault();
 
-            if (user === VALID_USER && pass === VALID_PASS) {
-                // Lưu trạng thái đăng nhập vào localStorage
-                localStorage.setItem('isLoggedIn', 'true');
-                localStorage.setItem('loginTime', new Date().getTime());
-                
-                // Chuyển hướng
-                window.location.href = HOME_URL;
-            } else {
-                // Hiển thị lỗi
-                errorMessage.classList.remove('hidden');
-                // Hiệu ứng rung khi sai
-                loginForm.classList.add('animate-bounce');
-                setTimeout(() => loginForm.classList.remove('animate-bounce'), 500);
-            }
-        });
+    const user = document.getElementById('username').value;
+    const pass = document.getElementById('password').value;
+
+    const validUser = USERS.find(u => u.username === user && u.password === pass);
+
+    if (validUser) {
+        localStorage.setItem('isLoggedIn', 'true');
+        localStorage.setItem('loginTime', new Date().getTime());
+        localStorage.setItem('role', validUser.role);
+
+        window.location.href = HOME_URL;
+    } else {
+        errorMessage.classList.remove('hidden');
+    }
+});
 
         // Logic bảo mật: Kiểm tra nếu người dùng quay lại trang này mà đã đăng nhập
         // Hoặc kiểm tra giả lập việc "vào thẳng" (Lưu ý: Bạn cần nhúng đoạn script kiểm tra vào trang đích để tối ưu)
