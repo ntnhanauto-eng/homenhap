@@ -218,6 +218,17 @@ function shareApp() {
         alert("Copy liên kết này để chia sẻ: " + window.location.href);
     }
 }
+
+
+    // Kiểm tra trạng thái đăng nhập
+    const isLoggedIn = localStorage.getItem('isLoggedIn');
+
+    if (isLoggedIn !== 'true') {
+        // Nếu chưa đăng nhập → quay về trang login
+        window.location.href = "https://ntnhanauto-eng.github.io/home/dangnhap.html";
+    }
+
+    
 </script>
     
     
