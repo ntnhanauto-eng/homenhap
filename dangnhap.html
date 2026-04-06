@@ -85,6 +85,13 @@
     if (validUser) {
         localStorage.setItem('isLoggedIn', 'true');
         localStorage.setItem('loginTime', new Date().getTime());
+
+       // 👇 CHÈN NGAY DƯỚI ĐÂY
+         localStorage.setItem('role', 'admin'); 
+       // hoặc 'user'
+
+
+        
         localStorage.setItem('role', validUser.role);
 
         window.location.href = HOME_URL;
