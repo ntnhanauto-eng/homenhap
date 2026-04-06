@@ -260,22 +260,28 @@ function logout() {
 
 
 document.addEventListener("DOMContentLoaded", () => {
+   document.addEventListener("DOMContentLoaded", () => {
     const role = localStorage.getItem('role');
 
-    // Ẩn menu admin nếu không phải admin
-    if (role !== 'admin') {
+    if (role === 'admin') {
+        // admin thấy hết → không ẩn gì
+        return;
+    }
+
+    if (role === 'user') {
+        // user → ẩn menu admin
         document.querySelectorAll('.admin-only').forEach(el => {
             el.style.display = 'none';
         });
     }
 
-    // Ẩn menu user nếu không phải user
-    if (role !== 'user') {
-        document.querySelectorAll('.user-only').forEach(el => {
+    // nếu không có role → ẩn hết cho an toàn
+    if (!role) {
+        document.querySelectorAll('.admin-only, .user-only').forEach(el => {
             el.style.display = 'none';
         });
     }
-});  
+});
 
 document.addEventListener("DOMContentLoaded", () => {
     const role = localStorage.getItem('role');
