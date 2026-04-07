@@ -2,35 +2,66 @@
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
-<title>Login</title>
+<title>Đăng nhập</title>
+<style>
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #0f171e;
+    color: white;
+    font-family: sans-serif;
+}
+.box {
+    background: #1e2a38;
+    padding: 30px;
+    border-radius: 12px;
+    width: 300px;
+}
+input {
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px;
+}
+button {
+    width: 100%;
+    padding: 10px;
+    background: #2ecc71;
+    border: none;
+    color: white;
+    font-weight: bold;
+}
+</style>
 </head>
+
 <body>
 
-<h2>Đăng nhập</h2>
-
-<input id="user" placeholder="Username"><br><br>
-<input id="pass" type="password" placeholder="Password"><br><br>
-
-<button onclick="login()">Đăng nhập</button>
+<div class="box">
+    <h2>Đăng nhập</h2>
+    <input type="text" id="user" placeholder="Username">
+    <input type="password" id="pass" placeholder="Password">
+    <button onclick="login()">Login</button>
+</div>
 
 <script>
-const users = [
-  { username: "admin", password: "123", role: "admin" },
-  { username: "user", password: "123", role: "user" }
-];
-
-function login(){
+function login() {
     const u = document.getElementById("user").value;
     const p = document.getElementById("pass").value;
 
-    const found = users.find(x => x.username === u && x.password === p);
-
-    if(found){
+    // Demo account
+    if (u === "admin" && p === "123") {
         localStorage.setItem("isLoggedIn", "true");
-        localStorage.setItem("role", found.role);
+        localStorage.setItem("role", "admin");
         window.location.href = "index.html";
-    } else {
-        alert("Sai tài khoản!");
+    } 
+    else if (u === "user" && p === "123") {
+        localStorage.setItem("isLoggedIn", "true");
+        localStorage.setItem("role", "user");
+        window.location.href = "index.html";
+    } 
+    else {
+        alert("Sai tài khoản");
     }
 }
 </script>
