@@ -190,17 +190,6 @@
 <link rel="apple-touch-icon" href="sm.png">
 
 <script>
-<script>
-const role = localStorage.getItem('role');
-
-if (role !== 'admin') {
-    alert("Bạn không có quyền truy cập!");
-    window.location.href = "index.html";
-}
-
-
-
-    
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
       navigator.serviceWorker.register('./sw.js')
@@ -212,7 +201,7 @@ if (role !== 'admin') {
 
 
     
-
+</script>
 
 <script>
 function shareApp() {
@@ -229,79 +218,6 @@ function shareApp() {
         alert("Copy liên kết này để chia sẻ: " + window.location.href);
     }
 }
-
-
-  <script>
-document.addEventListener("DOMContentLoaded", () => {
-
-    // CHECK LOGIN
-    const isLoggedIn = localStorage.getItem('isLoggedIn');
-
-    if (isLoggedIn !== 'true') {
-        window.location.href = "https://ntnhanauto-eng.github.io/homenhap/dangnhap.html";
-        return;
-    }
-
-    // CHECK SESSION
-    const loginTime = localStorage.getItem('loginTime');
-    const now = new Date().getTime();
-    const SESSION_LIMIT = 60 * 60 * 1000;
-
-    if (!loginTime || (now - loginTime) > SESSION_LIMIT) {
-        localStorage.clear();
-        window.location.href = "https://ntnhanauto-eng.github.io/homenhap/dangnhap.html";
-        return;
-    }
-
-});
-    
-// LOGOUT
-function logout() {
-    localStorage.clear();
-    window.location.href = "https://ntnhanauto-eng.github.io/homenhap/dangnhap.html";
-}
-<script>
-
-//Dùng cho nút đăng xuất    
-function logout() {
-    localStorage.removeItem('isLoggedIn');
-    localStorage.removeItem('loginTime');
-    window.location.href = "https://ntnhanauto-eng.github.io/homenhap/dangnhap.html";
-}
-
-
-document.addEventListener("DOMContentLoaded", () => {
-   document.addEventListener("DOMContentLoaded", () => {
-    const role = localStorage.getItem('role');
-
-    if (role === 'admin') {
-        // admin thấy hết → không ẩn gì
-        return;
-    }
-
-    if (role === 'user') {
-        // user → ẩn menu admin
-        document.querySelectorAll('.admin-only').forEach(el => {
-            el.style.display = 'none';
-        });
-    }
-
-    // nếu không có role → ẩn hết cho an toàn
-    if (!role) {
-        document.querySelectorAll('.admin-only, .user-only').forEach(el => {
-            el.style.display = 'none';
-        });
-    }
-});
-
-document.addEventListener("DOMContentLoaded", () => {
-    const role = localStorage.getItem('role');
-    document.getElementById('roleText').innerText = `(${role})`;
-});
-
-
-    
-    
 </script>
     
     
@@ -310,23 +226,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
 <header class="header">
     <div class="header-content">
-        <h1 class="header-title">
-    SMART SYSTEM 
-    <span id="roleText" style="font-size:12px;"></span>
-</h1>
+        <h1 class="header-title">SMART SYSTEM</h1>
         <button class="share-btn" onclick="shareApp()" title="Chia sẻ">
             <svg viewBox="0 0 24 24" width="24" height="24" fill="white">
                 <path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92c0-1.61-1.31-2.92-2.92-2.92zM18 4c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zM6 13c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm12 7.02c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1z"/>
             </svg>
         </button>
-     
-        
     </div>
-
-    <button onclick="logout()" 
-        style="background:#ef4444; border:none; color:white; padding:8px 12px; border-radius:6px;">
-        Đăng xuất
-    </button>
 </header>
 
     
@@ -334,15 +240,15 @@ document.addEventListener("DOMContentLoaded", () => {
     <span>HD HVS SMART</span>
 </div>
 <div class="grid">
-    <a class="item admin-only" href="https://ntnhanauto-eng.github.io/block3dviewer/" target="_blank">
+    <a class="item" href="https://ntnhanauto-eng.github.io/block3dviewer/" target="_blank">
         <div class="icon"><img src="icon3D.jpg" loading="lazy"></div>
         <div class="label">Block 3D</div>
     </a>
-    <a class="item admin-only" href="https://ntnhanauto-eng.github.io/chamcong/" target="_blank">
+    <a class="item" href="https://ntnhanauto-eng.github.io/chamcong/" target="_blank">
         <div class="icon"><img src="cco.png" loading="lazy"></div>
         <div class="label">Chấm công</div>
     </a>
-    <a class="item admin-only" href="https://hr.hd-hvs.com/#/v10a2000/" target="_blank">
+    <a class="item" href="https://hr.hd-hvs.com/#/v10a2000/" target="_blank">
         <div class="icon"><img src="hr.jpg" loading="lazy"></div>
         <div class="label">Bảng lương</div>
     </a>
@@ -369,35 +275,35 @@ document.addEventListener("DOMContentLoaded", () => {
         <div class="icon"><img src="tqm.jpg" loading="lazy"></div>
         <div class="label">Accuweather</div>
     </a> 
-      <a class="item admin-only" href="https://vndms.dmc.gov.vn" target="_blank">
+      <a class="item" href="https://vndms.dmc.gov.vn" target="_blank">
         <div class="icon"><img src="tqm.jpg" loading="lazy"></div>
         <div class="label">Giám sát thiên tai</div>
     </a>
-     <a class="item admin-only" href="http://hymetnet.gov.vn" target="_blank">
+     <a class="item" href="http://hymetnet.gov.vn" target="_blank">
         <div class="icon"><img src="tqm.jpg" loading="lazy"></div>
         <div class="label">Khí tượng quốc gia</div>
     </a>
-     <a class="item admin-only" href="http://thuyloivietnam.vn/home#antoan" target="_blank">
+     <a class="item" href="http://thuyloivietnam.vn/home#antoan" target="_blank">
         <div class="icon"><img src="tqm.jpg" loading="lazy"></div>
         <div class="label">Mực nước hồ chứa</div>
     </a>
-     <a class="item admin-only" href="https://vrain.vn/37/overview?public_map=windy" target="_blank">
+     <a class="item" href="https://vrain.vn/37/overview?public_map=windy" target="_blank">
         <div class="icon"><img src="tqm.jpg" loading="lazy"></div>
         <div class="label">Lượng mưa</div>
     </a>
-     <a class="item admin-only" href="https://typhoon2000.ph" target="_blank">
+     <a class="item" href="https://typhoon2000.ph" target="_blank">
         <div class="icon"><img src="tqm.jpg" loading="lazy"></div>
         <div class="label">Dãi áp thấp</div>
     </a>
-     <a class="item admin-only" href="https://maps.weather.gov.hk/wxviewer/index.html?lang=en" target="_blank">
+     <a class="item" href="https://maps.weather.gov.hk/wxviewer/index.html?lang=en" target="_blank">
         <div class="icon"><img src="tqm.jpg" loading="lazy"></div>
         <div class="label">Dự báo bão (HongKong)</div>
     </a>
-     <a class="item admin-only" href="https://www.tropicaltidbits.com/storminfo/" target="_blank">
+     <a class="item" href="https://www.tropicaltidbits.com/storminfo/" target="_blank">
         <div class="icon"><img src="tqm.jpg" loading="lazy"></div>
         <div class="label">Đường đi của bão (Mỹ)</div>
     </a>
-     <a class="item admin-only" href="https://www.jma.go.jp/bosai/map.html#4/36.633/154.863/&elem=typhoon_all&typhoon=all&contents=typhoon&lang=en" target="_blank">
+     <a class="item" href="https://www.jma.go.jp/bosai/map.html#4/36.633/154.863/&elem=typhoon_all&typhoon=all&contents=typhoon&lang=en" target="_blank">
         <div class="icon"><img src="tqm.jpg" loading="lazy"></div>
         <div class="label">Hướng bão (Nhật)</div>
     </a>
