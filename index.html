@@ -190,6 +190,8 @@
 <link rel="apple-touch-icon" href="sm.png">
 
 <script>
+
+    // cài đặt web lên màn hình
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
       navigator.serviceWorker.register('./sw.js')
@@ -201,9 +203,9 @@
 
 
     
-</script>
 
-<script>
+
+// chia sẻ web
 function shareApp() {
     if (navigator.share) {
         navigator.share({
