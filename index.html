@@ -191,6 +191,18 @@
 
 <script>
 
+
+
+
+        // Kiểm tra trạng thái đăng nhập
+    const isLoggedIn = localStorage.getItem('isLoggedIn');
+
+    if (isLoggedIn !== 'true') {
+        // Nếu chưa đăng nhập → quay về trang login
+        window.location.href = "login.html";
+    }
+
+
     // cài đặt web lên màn hình
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
