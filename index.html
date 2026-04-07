@@ -237,6 +237,15 @@ function shareApp() {
 }
 </script>
 
+
+
+ <script>
+function logout(){
+    localStorage.clear();
+    window.location.href = "login.html";
+}
+</script>   
+
 <script>
 const role = localStorage.getItem("role");
 
@@ -256,12 +265,7 @@ document.querySelectorAll(".item").forEach(el => {
 });
 </script>
 
- <script>
-function logout(){
-    localStorage.clear();
-    window.location.href = "login.html";
-}
-</script>   
+
     
 </head>
 <body>
