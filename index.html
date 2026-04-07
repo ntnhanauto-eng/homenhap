@@ -190,6 +190,23 @@
 <link rel="apple-touch-icon" href="sm.png">
 
 <script>
+
+<script>
+const isLoggedIn = localStorage.getItem("isLoggedIn");
+
+if(isLoggedIn !== "true"){
+    window.location.href = "login.html";
+}
+</script>
+
+
+
+
+
+
+
+
+ <script>   
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
       navigator.serviceWorker.register('./sw.js')
@@ -219,7 +236,32 @@ function shareApp() {
     }
 }
 </script>
-    
+
+<script>
+const role = localStorage.getItem("role");
+
+document.querySelectorAll(".item").forEach(el => {
+    const allow = el.getAttribute("data-role");
+
+    // Admin thấy tất cả → bỏ qua
+    if(role === "admin") return;
+
+    // Nếu là public → cho qua
+    if(allow === "all") return;
+
+    // Nếu không đúng quyền → ẩn
+    if(allow && allow !== role){
+        el.style.display = "none";
+    }
+});
+</script>
+
+ <script>
+function logout(){
+    localStorage.clear();
+    window.location.href = "login.html";
+}
+</script>   
     
 </head>
 <body>
@@ -227,6 +269,7 @@ function shareApp() {
 <header class="header">
     <div class="header-content">
         <h1 class="header-title">SMART SYSTEM</h1>
+        <button onclick="logout()">Logout</button>
         <button class="share-btn" onclick="shareApp()" title="Chia sẻ">
             <svg viewBox="0 0 24 24" width="24" height="24" fill="white">
                 <path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92c0-1.61-1.31-2.92-2.92-2.92zM18 4c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zM6 13c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm12 7.02c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1z"/>
@@ -240,23 +283,23 @@ function shareApp() {
     <span>HD HVS SMART</span>
 </div>
 <div class="grid">
-    <a class="item" href="https://ntnhanauto-eng.github.io/block3dviewer/" target="_blank">
+    <a class="item" data-role="all" href="https://ntnhanauto-eng.github.io/block3dviewer/" target="_blank">
         <div class="icon"><img src="icon3D.jpg" loading="lazy"></div>
         <div class="label">Block 3D</div>
     </a>
-    <a class="item" href="https://ntnhanauto-eng.github.io/chamcong/" target="_blank">
+    <a class="item" data-role="all" href="https://ntnhanauto-eng.github.io/chamcong/" target="_blank">
         <div class="icon"><img src="cco.png" loading="lazy"></div>
         <div class="label">Chấm công</div>
     </a>
-    <a class="item" href="https://hr.hd-hvs.com/#/v10a2000/" target="_blank">
+    <a class="item" data-role="all" href="https://hr.hd-hvs.com/#/v10a2000/" target="_blank">
         <div class="icon"><img src="hr.jpg" loading="lazy"></div>
         <div class="label">Bảng lương</div>
     </a>
-    <a class="item" href="https://pp.hd-hvs.com/#/v20Menu/" target="_blank">
+    <a class="item" data-role="all" href="https://pp.hd-hvs.com/#/v20Menu/" target="_blank">
         <div class="icon"><img src="pp.jpg" loading="lazy"></div>
         <div class="label">Production</div>
     </a>
-    <a class="item" href="https://tqm.hd-hvs.com/#/v80Menu/" target="_blank">
+    <a class="item" data-role="all" href="https://tqm.hd-hvs.com/#/v80Menu/" target="_blank">
         <div class="icon"><img src="tqm.jpg" loading="lazy"></div>
         <div class="label">TQM</div>
     </a>
@@ -267,43 +310,43 @@ function shareApp() {
     <span>THỜI TIẾT</span>
 </div>
 <div class="grid">
-  <a class="item" href="https://www.windy.com/12.485/109.282?12.408,109.282,11" target="_blank">
+  <a class="item" data-role="all" href="https://www.windy.com/12.485/109.282?12.408,109.282,11" target="_blank">
         <div class="icon"><img src="windy.jpg" loading="lazy"></div>
         <div class="label">Windy</div>
     </a>   
-    <a class="item" href="https://www.accuweather.com/vi/vn/ninh-phuoc/354228/weather-forecast/354228" target="_blank">
+    <a class="item" data-role="all" href="https://www.accuweather.com/vi/vn/ninh-phuoc/354228/weather-forecast/354228" target="_blank">
         <div class="icon"><img src="accu.jpg" loading="lazy"></div>
         <div class="label">Accuweather</div>
     </a> 
-      <a class="item" href="https://vndms.dmc.gov.vn" target="_blank">
+      <a class="item" data-role="admin" href="https://vndms.dmc.gov.vn" target="_blank">
         <div class="icon"><img src="gstt.jpg" loading="lazy"></div>
         <div class="label">Giám sát thiên tai</div>
     </a>
-     <a class="item" href="http://hymetnet.gov.vn" target="_blank">
+     <a class="item" data-role="admin" href="http://hymetnet.gov.vn" target="_blank">
         <div class="icon"><img src="ktqg.jpg" loading="lazy"></div>
         <div class="label">Khí tượng quốc gia</div>
     </a>
-     <a class="item" href="http://thuyloivietnam.vn/home#antoan" target="_blank">
+     <a class="item" data-role="admin" href="http://thuyloivietnam.vn/home#antoan" target="_blank">
         <div class="icon"><img src="mnhc.jpg" loading="lazy"></div>
         <div class="label">Mực nước hồ chứa</div>
     </a>
-     <a class="item" href="https://vrain.vn/37/overview?public_map=windy" target="_blank">
+     <a class="item" data-role="admin" href="https://vrain.vn/37/overview?public_map=windy" target="_blank">
         <div class="icon"><img src="lm.jpg" loading="lazy"></div>
         <div class="label">Lượng mưa</div>
     </a>
-     <a class="item" href="https://typhoon2000.ph" target="_blank">
+     <a class="item" data-role="admin" href="https://typhoon2000.ph" target="_blank">
         <div class="icon"><img src="dat.jpg" loading="lazy"></div>
         <div class="label">Dãi áp thấp</div>
     </a>
-     <a class="item" href="https://maps.weather.gov.hk/wxviewer/index.html?lang=en" target="_blank">
+     <a class="item" data-role="admin" href="https://maps.weather.gov.hk/wxviewer/index.html?lang=en" target="_blank">
         <div class="icon"><img src="dbb.png" loading="lazy"></div>
         <div class="label">Dự báo bão (HongKong)</div>
     </a>
-     <a class="item" href="https://www.tropicaltidbits.com/storminfo/" target="_blank">
+     <a class="item" data-role="admin" href="https://www.tropicaltidbits.com/storminfo/" target="_blank">
         <div class="icon"><img src="ddcb.jpg" loading="lazy"></div>
         <div class="label">Đường đi của bão (Mỹ)</div>
     </a>
-     <a class="item" href="https://www.jma.go.jp/bosai/map.html#4/36.633/154.863/&elem=typhoon_all&typhoon=all&contents=typhoon&lang=en" target="_blank">
+     <a class="item" data-role="admin" href="https://www.jma.go.jp/bosai/map.html#4/36.633/154.863/&elem=typhoon_all&typhoon=all&contents=typhoon&lang=en" target="_blank">
         <div class="icon"><img src="tqm.jpg" loading="lazy"></div>
         <div class="label">Hướng bão (Nhật)</div>
     </a>
