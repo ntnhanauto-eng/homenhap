@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Login</title>
+</head>
+<body>
+
+<h2>Đăng nhập</h2>
+
+<input id="user" placeholder="Username"><br><br>
+<input id="pass" type="password" placeholder="Password"><br><br>
+
+<button onclick="login()">Đăng nhập</button>
+
+<script>
+const users = [
+  { username: "admin", password: "123", role: "admin" },
+  { username: "user", password: "123", role: "user" }
+];
+
+function login(){
+    const u = document.getElementById("user").value;
+    const p = document.getElementById("pass").value;
+
+    const found = users.find(x => x.username === u && x.password === p);
+
+    if(found){
+        localStorage.setItem("isLoggedIn", "true");
+        localStorage.setItem("role", found.role);
+        window.location.href = "index.html";
+    } else {
+        alert("Sai tài khoản!");
+    }
+}
+</script>
+
+</body>
+</html>
