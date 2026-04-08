@@ -412,21 +412,6 @@ setTimeout(() => {
     document.body.style.opacity = "1";
 }, 300);
 
-//load grid    
-window.onload = () => {
-    checkRole();
-
-    document.getElementById('loginBtn').onclick = openLogin;
-    document.getElementById('logoutBtn').onclick = logout;
-
-    document.querySelectorAll('.grid').forEach(g => {
-        setTimeout(() => g.classList.add('show'), 200);
-    });
-
-    if (localStorage.getItem('role') === 'admin') {
-        resetTimer();
-    }
-};
 
     
 
