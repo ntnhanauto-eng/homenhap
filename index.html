@@ -238,13 +238,11 @@
 
 
 
-        // Kiểm tra trạng thái đăng nhập
-    const isLoggedIn = localStorage.getItem('isLoggedIn');
+     const role = localStorage.getItem('role');
 
-    if (isLoggedIn !== 'true') {
-        // Nếu chưa đăng nhập → quay về trang login
-        window.location.href = "login.html";
-    }
+if (!role) {
+    window.location.href = "login.html";
+}
 
 
     // cài đặt web lên màn hình
@@ -286,7 +284,7 @@ function toggleMenu() {
 // Đóng menu khi click ra ngoài
 document.addEventListener("click", function(e) {
     const dropdown = document.getElementById("dropdownMenu");
-    if (!e.target.closest(".dropdown")) {
+    if (!e.target.closest(".user-dropdown")) {
         if (dropdown) dropdown.style.display = "none";
     }
 });
@@ -339,7 +337,9 @@ function login() {
 // ===== LOGOUT =====
 function logout() {
     localStorage.removeItem('role');
+    clearTimeout(logoutTimer); // 🔥 dừng auto logout
     alert("Đã đăng xuất");
+
     checkRole();
 }
 
@@ -403,7 +403,7 @@ window.onload = () => {
     <button id="loginBtn" class="user-btn">🔐 Đăng nhập</button>
 
     <!-- Khi đã login -->
-    <div id="userDropdown" class="dropdown" style="display:none;">
+    <div id="userDropdown" class="user-dropdown" style="display:none;">
         <button class="user-btn" onclick="toggleMenu()">
             👤 Admin ▼
         </button>
