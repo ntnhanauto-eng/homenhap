@@ -334,8 +334,17 @@ function login() {
 
 // ===== LOGOUT =====
 function logout() {
+    const confirmLogout = confirm("Bạn có muốn đăng xuất không?");
+
+    if (!confirmLogout) return; // ❌ bấm Cancel → không làm gì
+
     localStorage.removeItem('role');
-    clearTimeout(logoutTimer); // 🔥 dừng auto logout
+    clearTimeout(logoutTimer);
+
+    // Đóng dropdown nếu đang mở
+    const menu = document.getElementById("dropdownMenu");
+    if (menu) menu.style.display = "none";
+
     alert("Đã đăng xuất");
 
     checkRole();
