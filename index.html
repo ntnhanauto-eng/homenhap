@@ -334,13 +334,9 @@ function login() {
 
 // ===== LOGOUT =====
 function logout() {
-    const confirmLogout = confirm("Bạn có muốn đăng xuất không?");
-
-    // 🔥 luôn đóng dropdown trước
+    // luôn đóng dropdown
     const menu = document.getElementById("dropdownMenu");
     if (menu) menu.style.display = "none";
-
-    if (!confirmLogout) return; // ❌ bấm Cancel → chỉ đóng menu, không logout
 
     localStorage.removeItem('role');
     clearTimeout(logoutTimer);
@@ -350,6 +346,7 @@ function logout() {
     checkRole();
 }
 
+    
 // ===== MODAL =====
 function openLogin() {
     document.getElementById('loginModal').style.display = 'block';
