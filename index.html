@@ -225,6 +225,27 @@
     background: #2ecc71;
 }
 
+        .item:hover .icon {
+    transform: translateY(-10px) scale(1.08);
+    background: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 15px 40px rgba(46, 204, 113, 0.6);
+}
+
+.item:active .icon {
+    transform: scale(0.92);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+}
+
+.grid {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: 0.6s ease;
+}
+
+.grid.show {
+    opacity: 1;
+    transform: translateY(0);
+}        
 
         
         
@@ -391,7 +412,23 @@ setTimeout(() => {
     document.body.style.opacity = "1";
 }, 300);
 
+//load grid    
+window.onload = () => {
+    checkRole();
 
+    document.getElementById('loginBtn').onclick = openLogin;
+    document.getElementById('logoutBtn').onclick = logout;
+
+    document.querySelectorAll('.grid').forEach(g => {
+        setTimeout(() => g.classList.add('show'), 200);
+    });
+
+    if (localStorage.getItem('role') === 'admin') {
+        resetTimer();
+    }
+};
+
+    
 
     
 </script>
