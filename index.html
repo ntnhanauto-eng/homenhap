@@ -336,14 +336,14 @@ function login() {
 function logout() {
     const confirmLogout = confirm("Bạn có muốn đăng xuất không?");
 
-    if (!confirmLogout) return; // ❌ bấm Cancel → không làm gì
+    // 🔥 luôn đóng dropdown trước
+    const menu = document.getElementById("dropdownMenu");
+    if (menu) menu.style.display = "none";
+
+    if (!confirmLogout) return; // ❌ bấm Cancel → chỉ đóng menu, không logout
 
     localStorage.removeItem('role');
     clearTimeout(logoutTimer);
-
-    // Đóng dropdown nếu đang mở
-    const menu = document.getElementById("dropdownMenu");
-    if (menu) menu.style.display = "none";
 
     alert("Đã đăng xuất");
 
